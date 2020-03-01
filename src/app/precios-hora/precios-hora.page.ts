@@ -155,7 +155,7 @@ export class PreciosHoraPage implements OnInit {
       this.preMedioHoy = this.preMedioHoy / this.preciosHoy.length;
     });
 
-    console.log(this.preciosHoy);
+    // console.log(this.preciosHoy);
 
     manana = moment(
       new Date(

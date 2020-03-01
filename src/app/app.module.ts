@@ -14,6 +14,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 import { HttpClientModule } from '@angular/common/http';
 import { EsiosService } from './services/esios.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ import { EsiosService } from './services/esios.service';
     IonicModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     StatusBar,

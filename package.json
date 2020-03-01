@@ -32,6 +32,7 @@
     "de.appplant.cordova.plugin.local-notification": "^0.8.5",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
+    "ng2-file-upload": "^1.4.0",
     "popper": "^1.0.1",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",

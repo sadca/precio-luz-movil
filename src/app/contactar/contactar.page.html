@@ -9,52 +9,93 @@
 
 <ion-content>
 
-  <ion-list>
-    <ion-radio-group>
-      <ion-list-header>
-        <ion-label>Motivo de contacto</ion-label>
-      </ion-list-header>
+  <form #form="ngForm" (ngSubmit)="enviar(form)">
 
-      <ion-item>
-        <ion-label>Ayuda</ion-label>
-        <ion-radio (click)="cambiarMotivo('ayuda')" mode="ios" checked="{{motivo == 'ayuda'}}"></ion-radio>
-      </ion-item>
+    <ion-list color="primary">
+      <ion-radio-group>
+        <ion-list-header>
+          <ion-label>Motivo de contacto</ion-label>
+        </ion-list-header>
 
-      <ion-item>
-        <ion-label>Consulta</ion-label>
-        <ion-radio (click)="cambiarMotivo('consulta')" mode="ios" checked="{{motivo == 'consulta'}}"></ion-radio>
-      </ion-item>
+        <ion-item>
+          <ion-label>Ayuda</ion-label>
+          <ion-radio (click)="cambiarMotivo('ayuda')" mode="ios" checked="{{motivo == 'ayuda'}}"></ion-radio>
+        </ion-item>
 
-      <ion-item>
-        <ion-label>Asesoría</ion-label>
-        <ion-radio (click)="cambiarMotivo('asesoria')" mode="ios" checked="{{motivo == 'asesoria'}}"></ion-radio>
-      </ion-item>
+        <ion-item>
+          <ion-label>Consulta</ion-label>
+          <ion-radio (click)="cambiarMotivo('consulta')" mode="ios" checked="{{motivo == 'consulta'}}"></ion-radio>
+        </ion-item>
 
-      <ion-item>
-        <ion-label>Otro</ion-label>
-        <ion-radio (click)="cambiarMotivo('otro')" mode="ios" checked="{{motivo == 'asesoria'}}"></ion-radio>
-      </ion-item>
-      <ion-item *ngIf="motivo == 'otro'">
-        <ion-label position="stacked">Observaciones</ion-label>
-        <ion-textarea></ion-textarea>
-      </ion-item>
+        <ion-item>
+          <ion-label>Asesoría</ion-label>
+          <ion-radio (click)="cambiarMotivo('asesoria')" mode="ios" checked="{{motivo == 'asesoria'}}"></ion-radio>
+        </ion-item>
 
-    </ion-radio-group>
-  </ion-list>
+        <ion-item>
+          <ion-label>Otro</ion-label>
+          <ion-radio (click)="cambiarMotivo('otro')" mode="ios" checked="{{motivo == 'asesoria'}}"></ion-radio>
+        </ion-item>
+        <ion-item *ngIf="motivo == 'otro'">
+          <ion-label position="stacked">Observaciones</ion-label>
+          <ion-textarea required [(ngModel)]="observaciones" name="observaciones"></ion-textarea>
+        </ion-item>
+        <ion-text class="small ml-3" color="danger"
+          *ngIf="form.submitted && form.controls['observaciones'] && form.controls['observaciones'].errors && form.controls['observaciones'].errors['required']">
+          Campo obligatorio</ion-text>
 
-  <ion-item>
-    <ion-label position="floating">Correo Electrónico <ion-text color="danger">*</ion-text>
-    </ion-label>
-    <ion-input type="email"></ion-input>
-  </ion-item>
+      </ion-radio-group>
+    </ion-list>
 
-  <ion-item>
-    <ion-label position="floating">Teléfono <ion-text class="text-muted">(Opcional)</ion-text>
-    </ion-label>
-    <ion-input type="email"></ion-input>
-  </ion-item>
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-input required email [(ngModel)]="correo" name="correo" type="email"></ion-input>
+    </ion-item>
+    <ion-text class="small ml-3" color="danger"
+      *ngIf="form.controls['correo'] && form.controls['correo'].errors && form.controls['correo'].errors['email']">
+      Introduzca un correo correcto</ion-text>
+    <ion-text class="small ml-3" color="danger"
+      *ngIf="form.submitted && form.controls['correo'] && form.controls['correo'].errors && form.controls['correo'].errors['required']">
+      Campo obligatorio</ion-text>
+
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono <ion-text class="text-muted small">(Opcional)</ion-text>
+      </ion-label>
+      <ion-input number type="number"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Comentario <ion-text color="danger">*</ion-text>
+      </ion-label>
+      <ion-textarea required [(ngModel)]="comentario" name="comentario"></ion-textarea>
+    </ion-item>
+    <ion-text
+      *ngIf="form.submitted && form.controls['comentario'] && form.controls['comentario'].errors && form.controls['comentario'].errors['required']"
+      class="small ml-3" color="danger">
+      Campo obligatorio</ion-text>
+
+    <br>
+    <br>
+
+    <section class="pl-3 pr-3 text-justify">
+      <ion-text class="text-muted">Nos pondremos en contacto con usted para ayudarle o informarle sobre
+        lo que necesite. Mantengase atento al correo electrónico o teléfono durante los próximos días.</ion-text>
+    </section>
+
+    <br>
+
+    <!-- <ion-button disabled="{{correo == '' || comentario == '' || (motivo == 'otro' && observaciones == '')}}"
+    (click)="enviar()" vertical="bottom" expand="block">Enviar</ion-button> -->
 
 
+    <ion-button type="submit" expand="block">Enviar</ion-button>
 
-
+  </form>
 </ion-content>
