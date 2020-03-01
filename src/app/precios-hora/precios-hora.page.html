@@ -151,7 +151,7 @@
             <ion-grid>
               <ion-row>
                 <ion-col>
-                  <ion-card>
+                  <ion-card color="primary">
                     <ion-card-header>
                       <ion-card-title>Precio Medio</ion-card-title>
                     </ion-card-header>
@@ -170,7 +170,7 @@
 
               <ion-row>
                 <ion-col>
-                  <ion-card>
+                  <ion-card color="success">
                     <ion-card-header>
                       <ion-card-title>Precio Menor</ion-card-title>
                     </ion-card-header>
@@ -192,7 +192,7 @@
 
               <ion-row>
                 <ion-col>
-                  <ion-card>
+                  <ion-card color="danger">
                     <ion-card-header>
                       <ion-card-title>Precio Mayor</ion-card-title>
                     </ion-card-header>
@@ -251,7 +251,7 @@
             </ion-card>
           </ion-col>
         </ion-row>
-        <ion-row *ngIf="!vistaDetalle">
+        <ion-row *ngIf="!vistaDetalle && preciosMan.length != 0">
           <ion-col>
             <ion-grid>
               <ion-row>
