@@ -1,5 +1,7 @@
 {
   "name": "precio-luz",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

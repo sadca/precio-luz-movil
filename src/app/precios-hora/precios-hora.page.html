@@ -1,0 +1,328 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Precios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-fab (click)="cambiarVistaDetalle()" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button size="small" color="primary">
+      <ion-icon name="list"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col [ngClass]="paginaActual==0?'subrayado':'cambiarPagina text-muted'" (click)="irA(0)">
+        Ayer
+      </ion-col>
+      <ion-col [ngClass]="paginaActual==1?'subrayado':'cambiarPagina text-muted'" (click)="irA(1)">
+        Hoy
+      </ion-col>
+      <ion-col [ngClass]="paginaActual==2?'subrayado':'cambiarPagina text-muted'" (click)="irA(2)">
+        Mañana
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-slides style="min-height: 90%;" (ionSlideDidChange)="cambioSolapa()" #capas pager="true"
+    [options]="{initialSlide: 1,speed: 400, pager:true,scrollbar:true}">
+    <ion-slide>
+      <ion-grid>
+        <ion-row *ngIf="vistaDetalle">
+          <ion-col>
+            <ion-card *ngFor="let precio of preciosAyer">
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <!-- <ion-text class="ion-text-capitalize">{{precio.datetime | date:'dd/MM/yyyy HH:mm:ss'}}</ion-text> -->
+                    <ion-text>{{precio.datetime | date:'H'}} h</ion-text>
+                  </ion-col>
+                  <ion-col>
+                    <ion-text>{{precio.value | number:'1.5-5'}} €/kWh</ion-text>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="!vistaDetalle">
+          <ion-col>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>Precio Medio</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                            <ion-text>{{preMedioAyer | number:'1.5-5'}} €/kWh</ion-text>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>Precio Menor</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                            <ion-text>{{preAyerMenor.fecha | date:'H'}} h</ion-text>
+                          </ion-col>
+                          <ion-col>
+                            <ion-text>{{preAyerMenor.precio | number:'1.5-5'}} €/kWh</ion-text>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>Precio Mayor</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                            <ion-text>{{preAyerMayor.fecha | date:'H'}} h</ion-text>
+                          </ion-col>
+                          <ion-col>
+                            <ion-text>{{preAyerMayor.precio | number:'1.5-5'}} €/kWh</ion-text>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-grid>
+
+        <ion-row *ngIf="vistaDetalle">
+          <ion-col>
+            <ion-card [ngClass]="precio.datetime.substring(0, 13) == hoy? 'bg-success text-light':''"
+              *ngFor="let precio of preciosHoy">
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <!-- <ion-text class="ion-text-capitalize">{{precio.datetime | date:'dd/MM/yyyy HH:mm:ss'}}</ion-text> -->
+                    <ion-text>{{precio.datetime | date:'H'}} h</ion-text>
+                  </ion-col>
+                  <ion-col>
+                    <ion-text>{{precio.value | number:'1.5-5'}} €/kWh</ion-text>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="!vistaDetalle">
+          <ion-col>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>Precio Medio</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                            <ion-text>{{preMedioHoy | number:'1.5-5'}} €/kWh</ion-text>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>Precio Menor</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                            <ion-text>{{preHoyMenor.fecha | date:'H'}} h</ion-text>
+                          </ion-col>
+                          <ion-col>
+                            <ion-text>{{preHoyMenor.precio | number:'1.5-5'}} €/kWh</ion-text>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>Precio Mayor</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                            <ion-text>{{preHoyMayor.fecha | date:'H'}} h</ion-text>
+                          </ion-col>
+                          <ion-col>
+                            <ion-text>{{preHoyMayor.precio | number:'1.5-5'}} €/kWh</ion-text>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <ion-card-content>
+                <canvas #lineCanvas></canvas>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-grid>
+        <ion-row class="text-center" *ngIf="preciosMan.length == 0">
+          Todavía no están disponibles los precios de este día.
+        </ion-row>
+        <ion-row *ngIf="vistaDetalle">
+          <ion-col>
+            <ion-card *ngFor="let precio of preciosMan">
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <!-- <ion-text class="ion-text-capitalize">{{precio.datetime | date:'dd/MM/yyyy HH:mm:ss'}}</ion-text> -->
+                    <ion-text>{{precio.datetime | date:'H'}} h</ion-text>
+                  </ion-col>
+                  <ion-col>
+                    <ion-text>{{precio.value | number:'1.5-5'}} €/kWh</ion-text>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="!vistaDetalle">
+          <ion-col>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>Precio Medio</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                            <ion-text>{{preMedioMan | number:'1.5-5'}} €/kWh</ion-text>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>Precio Menor</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                            <ion-text>{{preManMenor.fecha | date:'H'}} h</ion-text>
+                          </ion-col>
+                          <ion-col>
+                            <ion-text>{{preManMenor.precio | number:'1.5-5'}} €/kWh</ion-text>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>Precio Mayor</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                            <ion-text>{{preManMayor.fecha | date:'H'}} h</ion-text>
+                          </ion-col>
+                          <ion-col>
+                            <ion-text>{{preManMayor.precio | number:'1.5-5'}} €/kWh</ion-text>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+              
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- <ion-button (click)="borrarStorage()">Borrar Storage</ion-button> -->
+</ion-content>

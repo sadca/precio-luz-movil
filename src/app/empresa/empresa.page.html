@@ -1,0 +1,33 @@
+<ion-content>
+  <section class="fondo">
+    <br>
+    <br>
+    <section class="prueba">
+
+      <ion-fab (click)="atras()" horizontal="start" vertical="top" slot="fixed">
+        <ion-fab-button color="primary">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <!-- [color]="empresa?'light':'primary'" -->
+      <ion-card button="true" color="primary" (click)="cambioEmpresa(false)">
+        <ion-card-content>
+          <img style="height: 80px;" src="/assets/icon/persona_icono.svg">
+          <p class="ion-text-center">Particular</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card button="true" color="light" (click)="cambioEmpresa(true)">
+        <ion-card-content>
+          <img style="height: 80px;" src="/assets/icon/empresa_icono.svg" alt="Empresa" />
+          <p class="ion-text-center">Empresa</p>
+        </ion-card-content>
+      </ion-card>
+    </section>
+
+    <!-- <section class="ion-margin">
+      <ion-button (click)="siguiente()" expand="block">Siguiente</ion-button>
+    </section> -->
+  </section>
+
+</ion-content>

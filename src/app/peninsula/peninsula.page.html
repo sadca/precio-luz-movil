@@ -1,0 +1,35 @@
+<ion-content>
+  <section class="fondo">
+    <br>
+    <br>
+    <section class="ion-margin ion-padding ion-text-center">
+      <ion-text color="light">¿De que lugar desea conocer los precios de la luz?</ion-text>
+    </section>
+
+    <!-- [color]="peninsula?'primary':'light'" -->
+
+    <section class="prueba">
+      <ion-card button="true" color="light" (click)="cambioPeninsula('peninsula')">
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">Península</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+
+      <ion-card button="true" color="light" (click)="cambioPeninsula('baleares')">
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">Islas Baleares</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+
+      <ion-card button="true" color="light" (click)="cambioPeninsula('canarias')">
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">Islas Canarias</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </section>
+
+    <!-- <section class="ion-margin">
+      <ion-button expand="block" (click)="siguiente()">Siguiente</ion-button>
+    </section> -->
+  </section>
+</ion-content>

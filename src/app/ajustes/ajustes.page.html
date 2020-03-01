@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Ajustes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-radio-group>
+      <ion-list-header>
+        <ion-label>Lozalización</ion-label>
+      </ion-list-header>
+
+      <ion-item (click)="cambioPeninsula('peninsula')">
+        <ion-label>Península</ion-label>
+        <ion-radio mode="ios" checked="{{peninsula == 'peninsula'}}"></ion-radio>
+      </ion-item>
+
+      <ion-item (click)="cambioPeninsula('baleares')">
+        <ion-label>Islas Baleares</ion-label>
+        <ion-radio mode="ios" checked="{{peninsula == 'baleares'}}"></ion-radio>
+      </ion-item>
+
+      <ion-item (click)="cambioPeninsula('canarias')">
+        <ion-label>Islas Canarias</ion-label>
+        <ion-radio mode="ios" checked="{{peninsula == 'canarias'}}"></ion-radio>
+      </ion-item>
+
+    </ion-radio-group>
+    <br>
+    <ion-radio-group>
+      <ion-list-header>
+        <ion-label>Empresa o Particular</ion-label>
+      </ion-list-header>
+
+      <ion-item (click)="cambioEmpresa(true)">
+        <ion-label>Empresa</ion-label>
+        <ion-radio mode="ios" checked="{{empresa}}"></ion-radio>
+      </ion-item>
+
+      <ion-item (click)="cambioEmpresa(false)">
+        <ion-label>Particular</ion-label>
+        <ion-radio mode="ios" checked="{{empresa == false}}"></ion-radio>
+      </ion-item>
+
+    </ion-radio-group>
+  </ion-list>
+</ion-content>
