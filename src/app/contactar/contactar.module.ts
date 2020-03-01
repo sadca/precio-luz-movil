@@ -9,12 +9,7 @@ import { ContactarPageRoutingModule } from './contactar-routing.module';
 import { ContactarPage } from './contactar.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ContactarPageRoutingModule
-  ],
+  imports: [CommonModule, FormsModule, IonicModule, ContactarPageRoutingModule],
   declarations: [ContactarPage]
 })
 export class ContactarPageModule {}
