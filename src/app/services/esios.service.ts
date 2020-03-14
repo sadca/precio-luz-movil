@@ -113,6 +113,7 @@ export class EsiosService {
       //   this.sumarDatos(data.values);
       // });
 
+      // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < this.precios.length; i++) {
         this.precios[i].value = this.precios[i].value / 1000;
       }

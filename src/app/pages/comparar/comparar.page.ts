@@ -6,9 +6,9 @@ import {
   ToastController
 } from '@ionic/angular';
 import chartJs from 'chart.js';
-import { EsiosService } from '../services/esios.service';
+import { EsiosService } from '../../services/esios.service';
 import { LoadingController } from '@ionic/angular';
-import { labelsHoras } from '../config/constantes';
+import { labelsHoras } from '../../config/constantes';
 
 @Component({
   selector: 'app-comparar',
@@ -213,11 +213,4 @@ export class CompararPage implements OnInit {
     toast.present();
   }
 
-  async presentLoading(mensaje: string, id: string) {
-    this.loading = await this.loadingController.create({
-      message: mensaje,
-      id
-    });
-    await this.loading.present();
-  }
 }

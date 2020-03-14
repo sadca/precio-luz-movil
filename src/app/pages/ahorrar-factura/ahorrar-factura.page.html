@@ -12,8 +12,8 @@
 
     <section class="pl-3 pr-3 mt-3 text-justify">
       <ion-text class="text-muted">Adjuntanos tu factura de luz o gas, ya sea una imagen o un pdf y nosotros
-        contactaremos
-        contigo en el menor tiempo posible y te facilitaremos un estudio y un ahorro estimado para tí.</ion-text>
+        contactaremos contigo en el menor tiempo posible y te facilitaremos un estudio y un ahorro estimado para tí.
+      </ion-text>
     </section>
 
     <app-multi-file-upload></app-multi-file-upload>
@@ -33,9 +33,10 @@
     <br>
 
     <ion-item>
-      <ion-label position="floating">Teléfono <ion-text class="text-muted small">(Opcional)</ion-text>
+      <ion-label position="floating">Teléfono <ion-text class="text-muted small">(Opcional)
+        </ion-text>
       </ion-label>
-      <ion-input number type="number"></ion-input>
+      <ion-input number [(ngModel)]="telefono" name="telefono" type="number"></ion-input>
     </ion-item>
 
     <br>
@@ -50,10 +51,6 @@
       class="small ml-3" color="danger">
       Campo obligatorio</ion-text>
 
-    <br>
-    <br>
-
-    <ion-button (click)="upload()">Prueba de subida</ion-button>
     <br>
 
     <ion-button type="submit" expand="block">Enviar</ion-button>

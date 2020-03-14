@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EsiosService } from '../services/esios.service';
+import { EsiosService } from '../../services/esios.service';
 import { LoadingController, IonSlides, NavController } from '@ionic/angular';
 import { ViewChild } from '@angular/core';
 import * as moment from 'moment';

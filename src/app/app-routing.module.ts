@@ -9,11 +9,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-  },
-  {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+    loadChildren: () =>
+      import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'peninsula',
@@ -23,43 +20,59 @@ const routes: Routes = [
   {
     path: 'empresa',
     loadChildren: () =>
-      import('./empresa/empresa.module').then(m => m.EmpresaPageModule)
+      import('./pages/carga-inicial/empresa/empresa.module').then(
+        m => m.EmpresaPageModule
+      )
   },
   {
     path: 'ajustes',
     loadChildren: () =>
-      import('./ajustes/ajustes.module').then(m => m.AjustesPageModule)
+      import('./pages/ajustes/ajustes.module').then(m => m.AjustesPageModule)
   },
   {
     path: 'ayuda',
     loadChildren: () =>
-      import('./ayuda/ayuda.module').then(m => m.AyudaPageModule)
+      import('./pages/ayuda/ayuda.module').then(m => m.AyudaPageModule)
   },
   {
     path: 'graficos',
     loadChildren: () =>
-      import('./graficos/graficos.module').then(m => m.GraficosPageModule)
+      import('./pages/carga-inicial/graficos/graficos.module').then(
+        m => m.GraficosPageModule
+      )
   },
   {
     path: 'comparar',
     loadChildren: () =>
-      import('./comparar/comparar.module').then(m => m.CompararPageModule)
+      import('./pages/comparar/comparar.module').then(m => m.CompararPageModule)
   },
   {
     path: 'logo',
-    loadChildren: () => import('./logo/logo.module').then(m => m.LogoPageModule)
+    loadChildren: () =>
+      import('./pages/carga-inicial/logo/logo.module').then(
+        m => m.LogoPageModule
+      )
   },
   {
     path: 'precios-hora',
-    loadChildren: () => import('./precios-hora/precios-hora.module').then( m => m.PreciosHoraPageModule)
+    loadChildren: () =>
+      import('./pages/precios-hora/precios-hora.module').then(
+        m => m.PreciosHoraPageModule
+      )
   },
   {
     path: 'ahorrar-factura',
-    loadChildren: () => import('./ahorrar-factura/ahorrar-factura.module').then( m => m.AhorrarFacturaPageModule)
+    loadChildren: () =>
+      import('./pages/ahorrar-factura/ahorrar-factura.module').then(
+        m => m.AhorrarFacturaPageModule
+      )
   },
   {
     path: 'contactar',
-    loadChildren: () => import('./contactar/contactar.module').then( m => m.ContactarPageModule)
+    loadChildren: () =>
+      import('./pages/contactar/contactar.module').then(
+        m => m.ContactarPageModule
+      )
   }
 ];
 

@@ -15,6 +15,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { EsiosService } from './services/esios.service';
 import { FormsModule } from '@angular/forms';
+import { AhorrarFacturaService } from './services/ahorrar-factura.service';
+import { ContactarService } from './services/contactar.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +34,9 @@ import { FormsModule } from '@angular/forms';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     LocalNotifications,
-    EsiosService
+    EsiosService,
+    AhorrarFacturaService,
+    ContactarService
   ],
   bootstrap: [AppComponent]
 })

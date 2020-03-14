@@ -19,24 +19,24 @@
 
         <ion-item>
           <ion-label>Ayuda</ion-label>
-          <ion-radio (click)="cambiarMotivo('ayuda')" mode="ios" checked="{{motivo == 'ayuda'}}"></ion-radio>
+          <ion-radio (click)="cambiarMotivo('Ayuda')" mode="ios" checked="{{motivo == 'Ayuda'}}"></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Consulta</ion-label>
-          <ion-radio (click)="cambiarMotivo('consulta')" mode="ios" checked="{{motivo == 'consulta'}}"></ion-radio>
+          <ion-radio (click)="cambiarMotivo('Consulta')" mode="ios" checked="{{motivo == 'Consulta'}}"></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Asesoría</ion-label>
-          <ion-radio (click)="cambiarMotivo('asesoria')" mode="ios" checked="{{motivo == 'asesoria'}}"></ion-radio>
+          <ion-radio (click)="cambiarMotivo('Asesoria')" mode="ios" checked="{{motivo == 'Asesoria'}}"></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Otro</ion-label>
-          <ion-radio (click)="cambiarMotivo('otro')" mode="ios" checked="{{motivo == 'asesoria'}}"></ion-radio>
+          <ion-radio (click)="cambiarMotivo('Otro')" mode="ios" checked="{{motivo == 'Otro'}}"></ion-radio>
         </ion-item>
-        <ion-item *ngIf="motivo == 'otro'">
+        <ion-item *ngIf="motivo == 'Otro'">
           <ion-label position="stacked">Observaciones</ion-label>
           <ion-textarea required [(ngModel)]="observaciones" name="observaciones"></ion-textarea>
         </ion-item>
@@ -66,7 +66,7 @@
     <ion-item>
       <ion-label position="floating">Teléfono <ion-text class="text-muted small">(Opcional)</ion-text>
       </ion-label>
-      <ion-input number type="number"></ion-input>
+      <ion-input [(ngModel)]="telefono" name="telefono" number type="number"></ion-input>
     </ion-item>
 
     <br>
