@@ -30,6 +30,7 @@
       *ngIf="form.submitted && form.controls['correo'] && form.controls['correo'].errors && form.controls['correo'].errors['required']">
       Campo obligatorio</ion-text>
 
+      <button ion-button block (click)="getPicture()">Toma una foto</button>
     <br>
 
     <ion-item>
