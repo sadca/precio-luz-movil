@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { EsiosService } from '../../services/esios.service';
 import { LoadingController, IonSlides, NavController } from '@ionic/angular';
 import { ViewChild } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import chartJs from 'chart.js';
+import { PreciosHoraAyudaComponent } from '../../components/ayuda/precios-hora-ayuda/precios-hora-ayuda.component';
 
 @Component({
   selector: 'app-precios-hora',
@@ -54,6 +56,27 @@ export class PreciosHoraPage implements OnInit {
     fecha: new Date()
   };
 
+  precioBajoHoy1: number = 1;
+  precioBajoHoy2: number = 1;
+  precioBajoHoy3: number = 1;
+  precioAltoHoy1: number = 0;
+  precioAltoHoy2: number = 0;
+  precioAltoHoy3: number = 0;
+
+  precioBajoMan1: number = 1;
+  precioBajoMan2: number = 1;
+  precioBajoMan3: number = 1;
+  precioAltoMan1: number = 0;
+  precioAltoMan2: number = 0;
+  precioAltoMan3: number = 0;
+
+  precioBajoAyer1: number = 1;
+  precioBajoAyer2: number = 1;
+  precioBajoAyer3: number = 1;
+  precioAltoAyer1: number = 0;
+  precioAltoAyer2: number = 0;
+  precioAltoAyer3: number = 0;
+
   hoy: string = moment(new Date(moment().format('YYYY-MM-DD HH:mm:ss')))
     .format('')
     .substring(0, 13);
@@ -61,12 +84,15 @@ export class PreciosHoraPage implements OnInit {
   constructor(
     private esiosServ: EsiosService,
     public loadingController: LoadingController,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public modalController: ModalController
   ) {}
 
   async ngOnInit() {
     this.loading = await this.loadingController.create({
-      message: 'Cargando...',
+      message: '<img src="assets//logos/logo.gif">',
+      spinner: null,
+      cssClass: 'logo-cargando',
       id: 'cargando'
     });
 
@@ -119,6 +145,30 @@ export class PreciosHoraPage implements OnInit {
       for (const precio of this.preciosAyer) {
         this.preMedioAyer += precio.value;
 
+        if (precio.value < this.precioBajoAyer3) {
+          if (precio.value < this.precioBajoAyer2) {
+            if (precio.value < this.precioBajoAyer1) {
+              this.precioBajoAyer1 = precio.value;
+            } else {
+              this.precioBajoAyer2 = precio.value;
+            }
+          } else {
+            this.precioBajoAyer3 = precio.value;
+          }
+        }
+
+        if (precio.value > this.precioAltoAyer3) {
+          if (precio.value > this.precioAltoAyer2) {
+            if (precio.value > this.precioAltoAyer1) {
+              this.precioAltoAyer1 = precio.value;
+            } else {
+              this.precioAltoAyer2 = precio.value;
+            }
+          } else {
+            this.precioAltoAyer3 = precio.value;
+          }
+        }
+
         if (precio.value < this.preAyerMenor.precio) {
           this.preAyerMenor.precio = precio.value;
           this.preAyerMenor.fecha = precio.datetime;
@@ -139,8 +189,33 @@ export class PreciosHoraPage implements OnInit {
     // this.preciosHoy = await this.esiosServ.getPreciosPorFecha(hoy, manana);
     await this.esiosServ.getPreciosPorFecha(hoy, manana).then((data: any) => {
       this.preciosHoy = data;
+
       for (const precio of this.preciosHoy) {
         this.preMedioHoy += precio.value;
+
+        if (precio.value < this.precioBajoHoy3) {
+          if (precio.value < this.precioBajoHoy2) {
+            if (precio.value < this.precioBajoHoy1) {
+              this.precioBajoHoy1 = precio.value;
+            } else {
+              this.precioBajoHoy2 = precio.value;
+            }
+          } else {
+            this.precioBajoHoy3 = precio.value;
+          }
+        }
+
+        if (precio.value > this.precioAltoHoy3) {
+          if (precio.value > this.precioAltoHoy2) {
+            if (precio.value > this.precioAltoHoy1) {
+              this.precioAltoHoy1 = precio.value;
+            } else {
+              this.precioAltoHoy2 = precio.value;
+            }
+          } else {
+            this.precioAltoHoy3 = precio.value;
+          }
+        }
 
         if (precio.value < this.preHoyMenor.precio) {
           this.preHoyMenor.precio = precio.value;
@@ -174,6 +249,30 @@ export class PreciosHoraPage implements OnInit {
         this.preciosMan = data;
         for (const precio of this.preciosMan) {
           this.preMedioMan += precio.value;
+
+          if (precio.value < this.precioBajoMan3) {
+            if (precio.value < this.precioBajoMan2) {
+              if (precio.value < this.precioBajoMan1) {
+                this.precioBajoMan1 = precio.value;
+              } else {
+                this.precioBajoMan2 = precio.value;
+              }
+            } else {
+              this.precioBajoMan3 = precio.value;
+            }
+          }
+
+          if (precio.value > this.precioAltoMan3) {
+            if (precio.value > this.precioAltoMan2) {
+              if (precio.value > this.precioAltoMan1) {
+                this.precioAltoMan1 = precio.value;
+              } else {
+                this.precioAltoMan2 = precio.value;
+              }
+            } else {
+              this.precioAltoMan3 = precio.value;
+            }
+          }
 
           if (precio.value < this.preManMenor.precio) {
             this.preManMenor.precio = precio.value;
@@ -247,5 +346,16 @@ export class PreciosHoraPage implements OnInit {
     } else {
       this.vistaDetalle = true;
     }
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: PreciosHoraAyudaComponent
+    });
+    return await modal.present();
+  }
+
+  showInfo() {
+    this.presentModal();
   }
 }

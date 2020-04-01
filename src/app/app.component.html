@@ -7,45 +7,13 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
+        <a href="#" onclick="window.open('https://www.sadca.es', '_system', 'location=yes'); return false;">
+          <div class="p-2" style="background-color: black; text-align:center;">
+            <img width="80%" src="assets/logos/logo_blanco3.png">
+          </div>
+        </a>
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let page of appPages">
-
-            <ion-item [routerDirection]="'root'" [routerLink]="page.url" [color]="page.fondo">
-              <ion-icon slot="start" [name]="page.icon" [color]="page.colorIcon"></ion-icon>
-              <ion-label [color]="page.texto">
-                {{page.title}}
-              </ion-label>
-            </ion-item>
-
-            <!-- <ion-item [routerDirection]="'root'" [routerLink]="'/home'">
-              <ion-icon slot="start" name="home" color="medium"></ion-icon>
-              <ion-label>
-                Inicio
-              </ion-label>
-            </ion-item>
-
-            <ion-item [routerDirection]="'root'" [routerLink]="'/ahorrar-factura'" color="warning">
-              <ion-icon slot="start" name="logo-euro" color="medium"></ion-icon>
-              <ion-label style="color: black;">
-                Ahorra en tu factura
-              </ion-label>
-            </ion-item>
-
-            <ion-item [routerDirection]="'root'" [routerLink]="'/home'">
-              <ion-icon slot="start" name="home" color="medium"></ion-icon>
-              <ion-label>
-                Inicio
-              </ion-label>
-            </ion-item> -->
-
-            <!-- <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon" color="medium"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
-            </ion-item> -->
-
-          </ion-menu-toggle>
+          <app-menu></app-menu>
         </ion-list>
       </ion-content>
     </ion-menu>

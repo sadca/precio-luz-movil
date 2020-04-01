@@ -1,0 +1,11 @@
+<ion-menu-toggle auto-hide="false" *ngFor="let page of appPages">
+
+  <ion-item [routerDirection]="'root'" [routerLink]="page.url" (click)="cambioColor(page)"
+    [color]="page.fondo">
+    <ion-icon slot="start" [name]="page.icon" [color]="page.colorIcon"></ion-icon>
+    <ion-label [color]="page.texto">
+      {{page.title}}
+    </ion-label>
+  </ion-item>
+
+</ion-menu-toggle>

@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
+    "@ionic-native/camera": "^5.23.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/local-notifications": "^5.20.0",
     "@ionic-native/splash-screen": "^5.0.0",
@@ -28,6 +29,7 @@
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "cordova-android": "8.1.0",
+    "cordova-plugin-camera": "^4.1.0",
     "cordova-sqlite-storage": "^4.0.0",
     "core-js": "^2.5.4",
     "de.appplant.cordova.plugin.local-notification": "^0.8.5",
@@ -68,7 +70,7 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.15.0",
+    "tslint": "^5.15.0",
     "typescript": "~3.4.3"
   },
   "description": "An Ionic project",
@@ -81,7 +83,8 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "android"

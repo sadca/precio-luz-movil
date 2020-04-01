@@ -32,7 +32,9 @@ export class ContactarPage implements OnInit {
   async enviar(form: NgForm) {
     if (form.valid) {
       this.loading = await this.loadingController.create({
-        message: 'Cargando...',
+        message: '<img src="assets/logos/logo.gif">',
+        spinner: null,
+        cssClass: 'logo-cargando',
         id: 'cargando'
       });
       await this.loading.present();

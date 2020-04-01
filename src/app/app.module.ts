@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterLinkActive } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -17,10 +17,19 @@ import { EsiosService } from './services/esios.service';
 import { FormsModule } from '@angular/forms';
 import { AhorrarFacturaService } from './services/ahorrar-factura.service';
 import { ContactarService } from './services/contactar.service';
+import { Camera } from '@ionic-native/camera/ngx';
+import { MenuComponent } from './components/menu/menu.component';
+import { PreciosHoraAyudaComponent } from './components/ayuda/precios-hora-ayuda/precios-hora-ayuda.component';
+import { CompararPreciosAyudaComponent } from './components/ayuda/comparar-precios-ayuda/comparar-precios-ayuda.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    PreciosHoraAyudaComponent,
+    CompararPreciosAyudaComponent
+  ],
+  entryComponents: [PreciosHoraAyudaComponent, CompararPreciosAyudaComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -36,7 +45,8 @@ import { ContactarService } from './services/contactar.service';
     LocalNotifications,
     EsiosService,
     AhorrarFacturaService,
-    ContactarService
+    ContactarService,
+    Camera
   ],
   bootstrap: [AppComponent]
 })

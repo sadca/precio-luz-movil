@@ -7,8 +7,10 @@ import {
 } from '@ionic/angular';
 import chartJs from 'chart.js';
 import { EsiosService } from '../../services/esios.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { labelsHoras } from '../../config/constantes';
+import { PreciosHoraAyudaComponent } from '../../components/ayuda/precios-hora-ayuda/precios-hora-ayuda.component';
+import { CompararPreciosAyudaComponent } from '../../components/ayuda/comparar-precios-ayuda/comparar-precios-ayuda.component';
 
 @Component({
   selector: 'app-comparar',
@@ -77,7 +79,8 @@ export class CompararPage implements OnInit {
     public navCtrl: NavController,
     public alertController: AlertController,
     public toastController: ToastController,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public modalController: ModalController
   ) {}
 
   ngOnInit() {
@@ -98,7 +101,9 @@ export class CompararPage implements OnInit {
 
   async nuevaFecha() {
     this.loading = await this.loadingController.create({
-      message: 'Cargando...',
+      message: '<img src="assets/logos/logo.gif">',
+      spinner: null,
+      cssClass: 'logo-cargando',
       id: 'cargando'
     });
     await this.loading.present();
@@ -168,7 +173,9 @@ export class CompararPage implements OnInit {
 
   async borrarFecha(index: number) {
     this.loading = await this.loadingController.create({
-      message: 'Cargando...',
+      message: '<img src="assets/logos/logo.gif">',
+      spinner: null,
+      cssClass: 'logo-cargando',
       id: 'cargando'
     });
     await this.loading.present();
@@ -213,4 +220,14 @@ export class CompararPage implements OnInit {
     toast.present();
   }
 
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: CompararPreciosAyudaComponent
+    });
+    return await modal.present();
+  }
+
+  showInfo() {
+    this.presentModal();
+  }
 }

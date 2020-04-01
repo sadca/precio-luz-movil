@@ -4,12 +4,152 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Ayuda
+      Entiende tu factura
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
+
+  <div class="container p-4 text-justify">
+
+    <p class="text-center font-weight-bold">¿A quién va dirigida esta app?</p>
+    <p>Para aquellas personas que quieran ahorrar en su factura de la luz, existen dos formas:</p>
+
+    <ul>
+      <li>Aprovechar que el precio de la energía es distinto en cada hora (utilizando los electrodomésticos en las horas
+        más baratas)</li>
+      <li>Conseguir un precio más barato (Estudiamos tu factura, hablamos con las empresas comercializadoras de energía
+        y te conseguimos un precio más barato)</li>
+    </ul>
+
+    <p>¿Y sabes qué? Nosotros te ayudamos con las dos y completamente gratis.</p>
+
+    <p class="font-weight-bold">
+      1. Contador inteligente + distribuidor + comercializadora
+    </p>
+    <p class="ml-3">
+      El contador inteligente permite a su comercializadora de energía facturarle por el precio que la energía tiene en
+      cada hora del día. El distribuidor tendrá que enviarle esta información a su comercializadora .
+    </p>
+    <p class="ml-3">
+      Si usted tiene uno de ellos puede ahorrar utilizando los electrodomésticos en las horas del día en las que la
+      energía es más barata.
+    </p>
+
+    <p class="font-weight-bold">
+      Territorio
+    </p>
+    <p class="ml-3">
+      El sistema eléctrico español está dividido en 5 subsistemas (Península, Baleares, Canarias, Ceuta y Melilla).
+      Actualmente esta app solo muestra precios de Península, si tu punto de suministro no se encuentra en Península no
+      te
+      preocupes, estamos trabajando en nuevas actualizaciones.
+    </p>
+
+    <p class="font-weight-bold">
+      Tarifas
+    </p>
+    <p class="ml-3">
+      Puedes encontrar tu tarifa mirando en tu factura, estas son las tarifas:
+    </p>
+    <p class="ml-3 font-weight-bold">
+      Tarifa General (2.0A) - 1 periodo
+    </p>
+    <p class="ml-3 font-weight-bold">
+      Tarifa N octurna (2.0DHA) – 2 Periodos
+    </p>
+    <p class="ml-3 font-weight-bold">
+      Tarifa Vehículo Eléctrico (2.0DHS) – 3 Periodos
+    </p>
+
+    <p class="font-weight-bold">
+      Precio
+    </p>
+    <p class="ml-3">
+      Los precios que se muestran en esta app representan el coste aproximado de la energía y son proporcionados por el
+      operador del Sistema Eléctrico Español (Red Eléctrica de España)
+    </p>
+
+    <p class="font-weight-bold">
+      Electrodomésticos
+    </p>
+    <p class="ml-3">
+      En este apartado te ayudamos a elegir a que electrodoméstico prestar más atención
+    </p>
+
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th scope="col">Electrodoméstico</th>
+          <th scope="col">Potencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let elect of electrodomesticos">
+          <td>{{elect.nombre}}</td>
+          <td>{{elect.potencia}} W</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="font-weight-bold">
+      Producto contratado
+    </p>
+    <p class="ml-3">
+      La gran mayoría de hogares en España tienen uno de estos dos productos contratados
+    </p>
+    <ul>
+
+      <li>
+        Fijo: El precio de la luz es el mismo para cada periodo tarifario durante la vigencia del contrato (generalmente
+        12 meses), de modo que con una tarifa general (2.0A) usted tendrá el mismo precio durante todo el año, con una
+        tarifa nocturna (2.0DHA) tendrá 2 precios distintos dependiendo de la hora del día y época del año y con una
+        tarifa Vehículo Eléctrico (2.0DHS) tendrá 3 precios distintos dependiendo del día y época del año.
+      </li>
+
+      <li>
+        Indexado: Tiene un precio distinto a cada hora, que se determinará por los distintos costes del mercado, del
+        sistema y los costes de la comercializadora. Pagas lo que consumes en cada momento.
+      </li>
+
+    </ul>
+
+    <p>
+      Nuestra aplicación está dirigida a aquellas personas que tengan contratado o que quieran contratar este segundo
+      producto.
+    </p>
+
+    <p class="font-weight-bold">
+      2. Ahorro
+    </p>
+
+    <p class="ml-3">
+      Pero… hay algo más Sadca Energy también te puede ayudar a ahorrar si tienes contratado un producto fijo ¿Cómo?
+    </p>
+    <p class="ml-3">
+      Ofreciéndote un producto fijo más barato y enviándote un estudio personalizado haciéndote ver cuál será tu ahorro
+      aproximado
+    </p>
+    <p class="ml-3">
+      ¿Y si tengo un indexado puedo pagar menos a mi comercializadora?
+    </p>
+    <p class="ml-3">
+      Sí, contactamos con comercializadoras y conseguimos que bajen sus costes de comercialización, por lo que si ellos
+      ganan menos usted ahorra más.
+    </p>
+    <p class="ml-3">
+
+      ¿Quieres saber como ganamos dinero?
+    </p>
+    <p class="ml-3">
+      Fácil, con costes operativos muy bajos y haciendo feliz a todas las partes, a la comercializadora le llevamos un
+      cliente que no tenía y a ti te ayudamos a ahorrar en tu factura
+    </p>
+
+
+  </div>
+
 
 </ion-content>
