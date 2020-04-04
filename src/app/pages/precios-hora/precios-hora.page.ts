@@ -358,4 +358,16 @@ export class PreciosHoraPage implements OnInit {
   showInfo() {
     this.presentModal();
   }
+
+  horaMenos(fecha: Date) {
+    return moment(fecha).subtract(1, 'hours');
+  }
+
+  isNow(fecha: Date) {
+    return (
+      moment()
+        .add(1, 'hours')
+        .format('YYYY-MM-DD H') === moment(fecha).format('YYYY-MM-DD H')
+    );
+  }
 }

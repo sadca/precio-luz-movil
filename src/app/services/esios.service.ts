@@ -131,6 +131,8 @@ export class EsiosService {
 
     params = params.append('start_date', '' + desde);
     params = params.append('end_date', '' + hasta);
+    console.log('Desde', desde);
+    console.log('Hasta', hasta);
 
     const headers = new HttpHeaders({
       Authorization: TOKEN

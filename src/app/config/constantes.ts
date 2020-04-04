@@ -26,3 +26,9 @@ export let labelsHoras = [
   '22',
   '23'
 ];
+
+export let tarifas = [
+  { id: '2.0A', value: 'Tarifa General (2.0A) - 1 periodo' },
+  { id: '2.0DHA', value: 'Tarifa N octurna (2.0DHA) – 2 Periodos' },
+  { id: '2.0DHS', value: 'Tarifa Vehículo Eléctrico (2.0DHS) – 3 Periodos' }
+];

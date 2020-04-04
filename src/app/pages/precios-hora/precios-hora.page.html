@@ -134,10 +134,11 @@
                 <ion-row>
                   <ion-col size="4">
                     <!-- <ion-text class="ion-text-capitalize">{{precio.datetime | date:'dd/MM/yyyy HH:mm:ss'}}</ion-text> -->
-                    <ion-text>{{precio.datetime | date:'H'}} h </ion-text>
+                    <ion-text>{{horaMenos(precio.datetime) | date:'H'}} h - {{precio.datetime | date:'H'}} h </ion-text>
                   </ion-col>
                   <ion-col size="2">
-                    <ion-label class="text-left" *ngIf="precio.datetime.substring(0, 13) == hoy">
+                    <!-- <ion-label class="text-left" *ngIf="precio.datetime.substring(0, 13) == hoy"> -->
+                    <ion-label class="text-left" *ngIf="isNow(precio.datetime)">
                       <ion-icon class="grande" color="primary" name="time"></ion-icon>
                     </ion-label>
                   </ion-col>

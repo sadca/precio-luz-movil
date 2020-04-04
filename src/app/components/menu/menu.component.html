@@ -1,11 +1,19 @@
-<ion-menu-toggle auto-hide="false" *ngFor="let page of appPages">
+<a href="#" onclick="window.open('https://www.sadca.es', '_system', 'location=yes'); return false;">
+  <!-- <div class="p-2" style="background-color: black; text-align:center;">
+    <img width="80%" src="assets/logos/logo_blanco3.png">
+  </div> -->
+  <div class="p-2" style="text-align:center;">
+    <img width="80%" src="assets/logos/logo_negro.png">
+  </div>
+</a>
 
-  <ion-item [routerDirection]="'root'" [routerLink]="page.url" (click)="cambioColor(page)"
-    [color]="page.fondo">
-    <ion-icon slot="start" [name]="page.icon" [color]="page.colorIcon"></ion-icon>
-    <ion-label [color]="page.texto">
-      {{page.title}}
-    </ion-label>
-  </ion-item>
-
-</ion-menu-toggle>
+<ion-list>
+  <ion-menu-toggle auto-hide="false" *ngFor="let page of appPages">
+    <ion-item [routerDirection]="'root'" [routerLink]="page.url" (click)="cambioColor(page)" [color]="page.fondo">
+      <ion-icon slot="start" [name]="page.icon" [color]="page.colorIcon"></ion-icon>
+      <ion-label [color]="page.texto">
+        {{page.title}}
+      </ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+</ion-list>

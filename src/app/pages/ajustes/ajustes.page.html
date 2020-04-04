@@ -15,6 +15,18 @@
   <ion-list>
     <ion-radio-group>
       <ion-list-header>
+        <ion-label class="font-weight-bold">Tarifa</ion-label>
+      </ion-list-header>
+
+      <ion-item (click)="cambioTarifa(tar.id)" *ngFor="let tar of tarifas">
+        <ion-label>{{tar.value}}</ion-label>
+        <ion-radio mode="ios" checked="{{tar.id == tarifa}}"></ion-radio>
+      </ion-item>
+
+    </ion-radio-group>
+
+    <!-- <ion-radio-group>
+      <ion-list-header>
         <ion-label>Lozalización</ion-label>
       </ion-list-header>
 
@@ -50,6 +62,13 @@
         <ion-radio mode="ios" checked="{{empresa == false}}"></ion-radio>
       </ion-item>
 
-    </ion-radio-group>
+    </ion-radio-group> -->
   </ion-list>
+
+  <br><br>
+
+  <ion-item onclick="window.open('https://www.sadca.es', '_system', 'location=yes'); return false;">
+    Aviso Legal
+  </ion-item>
+
 </ion-content>
