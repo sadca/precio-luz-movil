@@ -17,7 +17,6 @@ import { EsiosService } from './services/esios.service';
 import { FormsModule } from '@angular/forms';
 import { AhorrarFacturaService } from './services/ahorrar-factura.service';
 import { ContactarService } from './services/contactar.service';
-import { Camera } from '@ionic-native/camera/ngx';
 import { MenuComponent } from './components/menu/menu.component';
 import { PreciosHoraAyudaComponent } from './components/ayuda/precios-hora-ayuda/precios-hora-ayuda.component';
 import { CompararPreciosAyudaComponent } from './components/ayuda/comparar-precios-ayuda/comparar-precios-ayuda.component';
@@ -27,7 +26,7 @@ import { CompararPreciosAyudaComponent } from './components/ayuda/comparar-preci
     AppComponent,
     MenuComponent,
     PreciosHoraAyudaComponent,
-    CompararPreciosAyudaComponent
+    CompararPreciosAyudaComponent,
   ],
   entryComponents: [PreciosHoraAyudaComponent, CompararPreciosAyudaComponent],
   imports: [
@@ -36,7 +35,7 @@ import { CompararPreciosAyudaComponent } from './components/ayuda/comparar-preci
     AppRoutingModule,
     IonicStorageModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     StatusBar,
@@ -46,8 +45,7 @@ import { CompararPreciosAyudaComponent } from './components/ayuda/comparar-preci
     EsiosService,
     AhorrarFacturaService,
     ContactarService,
-    Camera
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

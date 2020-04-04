@@ -11,20 +11,20 @@ export class LogoPage implements OnInit {
   constructor(private storage: Storage, private router: Router) {}
 
   ngOnInit() {
-    this.storage.get('peninsula').then(valor => {
-      const peninsula = valor;
-      if (peninsula === null) {
-        this.router.navigate(['peninsula']);
-        return;
-      }
-    });
-    this.storage.get('empresa').then(valor => {
-      const empresa = valor;
-      if (empresa === null) {
-        this.router.navigate(['peninsula']);
-        return;
-      }
-    });
+    // this.storage.get('peninsula').then(valor => {
+    //   const peninsula = valor;
+    //   if (peninsula === null) {
+    //     this.router.navigate(['peninsula']);
+    //     return;
+    //   }
+    // });
+    // this.storage.get('empresa').then(valor => {
+    //   const empresa = valor;
+    //   if (empresa === null) {
+    //     this.router.navigate(['peninsula']);
+    //     return;
+    //   }
+    // });
     setTimeout(() => {
       this.router.navigate(['home']);
     }, 4000);

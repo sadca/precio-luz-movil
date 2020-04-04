@@ -51,7 +51,7 @@
                 <ion-row>
                   <ion-col>
                     <!-- <ion-text class="ion-text-capitalize">{{precio.datetime | date:'dd/MM/yyyy HH:mm:ss'}}</ion-text> -->
-                    <ion-text>{{precio.datetime | date:'H'}} h</ion-text>
+                    <ion-text>{{precio.datetime | date:'H'}} h - {{horaMas(precio.datetime) | date:'H'}} h</ion-text>
                   </ion-col>
                   <ion-col>
                     <ion-text>{{precio.value | number:'1.5-5'}} €/kWh</ion-text>
@@ -134,7 +134,7 @@
                 <ion-row>
                   <ion-col size="4">
                     <!-- <ion-text class="ion-text-capitalize">{{precio.datetime | date:'dd/MM/yyyy HH:mm:ss'}}</ion-text> -->
-                    <ion-text>{{horaMenos(precio.datetime) | date:'H'}} h - {{precio.datetime | date:'H'}} h </ion-text>
+                    <ion-text>{{precio.datetime | date:'H'}} h - {{horaMas(precio.datetime) | date:'H'}} h</ion-text>
                   </ion-col>
                   <ion-col size="2">
                     <!-- <ion-label class="text-left" *ngIf="precio.datetime.substring(0, 13) == hoy"> -->
@@ -236,7 +236,7 @@
                 <ion-row>
                   <ion-col>
                     <!-- <ion-text class="ion-text-capitalize">{{precio.datetime | date:'dd/MM/yyyy HH:mm:ss'}}</ion-text> -->
-                    <ion-text>{{precio.datetime | date:'H'}} h</ion-text>
+                    <ion-text>{{precio.datetime | date:'H'}} h - {{horaMas(precio.datetime) | date:'H'}} h</ion-text>
                   </ion-col>
                   <ion-col>
                     <ion-text>{{precio.value | number:'1.5-5'}} €/kWh</ion-text>
