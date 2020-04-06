@@ -30,7 +30,7 @@ export class AhorrarFacturaService {
     const headers: HttpHeaders = new HttpHeaders({});
     const req = new HttpRequest(
       'POST',
-      this.url + '/ahorrar-factura',
+      this.url + '/mails/ahorrar-factura',
       formdata,
       {
         headers,

@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-ahorrar-factura',
   templateUrl: './ahorrar-factura.page.html',
-  styleUrls: ['./ahorrar-factura.page.scss']
+  styleUrls: ['./ahorrar-factura.page.scss'],
 })
 export class AhorrarFacturaPage implements OnInit {
   @ViewChild(MultiFileUploadComponent, { static: false })
@@ -15,6 +15,8 @@ export class AhorrarFacturaPage implements OnInit {
   correo: string = '';
   telefono: string = '';
   comentario: string = '';
+  acuerdoComer: boolean = true;
+  politicaProtec: boolean = true;
 
   loading: any = null;
 
@@ -27,12 +29,15 @@ export class AhorrarFacturaPage implements OnInit {
   ngOnInit() {}
 
   async enviar(form: NgForm) {
+    if (!this.politicaProtec) {
+      return;
+    }
     if (form.valid) {
       this.loading = await this.loadingController.create({
         message: '<img src="assets/logos/logo.gif">',
         spinner: null,
         cssClass: 'logo-cargando',
-        id: 'cargando'
+        id: 'cargando',
       });
       await this.loading.present();
 
@@ -41,7 +46,7 @@ export class AhorrarFacturaPage implements OnInit {
       const datos = {
         correo: this.correo,
         comentario: this.comentario,
-        telefono: this.telefono
+        telefono: this.telefono,
       };
 
       console.log(datos);
@@ -74,7 +79,7 @@ export class AhorrarFacturaPage implements OnInit {
   async presentToast(mensaje: string) {
     const toast = await this.toastController.create({
       message: mensaje,
-      duration: 5000
+      duration: 5000,
     });
     toast.present();
   }
@@ -85,5 +90,4 @@ export class AhorrarFacturaPage implements OnInit {
     this.telefono = undefined;
     this.fileField.archivos = [];
   }
-
 }

@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'logo',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -12,18 +12,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomePageModule),
   },
-  // {
-  //   path: 'peninsula',
-  //   loadChildren: () =>
-  //     import('./peninsula/peninsula.module').then(m => m.PeninsulaPageModule)
-  // },
-  // {
-  //   path: 'empresa',
-  //   loadChildren: () =>
-  //     import('./pages/carga-inicial/empresa/empresa.module').then(
-  //       m => m.EmpresaPageModule
-  //     )
-  // },
   {
     path: 'ajustes',
     loadChildren: () =>
@@ -33,13 +21,6 @@ const routes: Routes = [
     path: 'ayuda',
     loadChildren: () =>
       import('./pages/ayuda/ayuda.module').then((m) => m.AyudaPageModule),
-  },
-  {
-    path: 'graficos',
-    loadChildren: () =>
-      import('./pages/carga-inicial/graficos/graficos.module').then(
-        (m) => m.GraficosPageModule
-      ),
   },
   {
     path: 'comparar',

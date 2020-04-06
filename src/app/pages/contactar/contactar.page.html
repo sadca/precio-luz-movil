@@ -1,10 +1,8 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
     <ion-title>Contactar</ion-title>
-  </ion-toolbar>
+  </ion-buttons>
 </ion-header>
 
 <ion-content>
@@ -80,6 +78,28 @@
       *ngIf="form.submitted && form.controls['comentario'] && form.controls['comentario'].errors && form.controls['comentario'].errors['required']"
       class="small ml-3" color="danger">
       Campo obligatorio</ion-text>
+
+    <br>
+    <br>
+
+    <div class="form-check ml-3">
+      <input [(ngModel)]="politicaProtec" name="politicaProtec" id="politicaProtec" class="form-check-input"
+        type="checkbox">
+      <label class="form-check-label" for="politicaProtec">He leído y acepto la <span
+          onclick="window.open('https://www.sadca.es/Privacy.html', '_system', 'location=yes'); return false;"
+          class="alert-link">Política de
+          privacidad y Protección de datos</span></label>
+      <label *ngIf="!politicaProtec" class="form-check-label text-danger" for="politicaProtec">Debe aceptar esta opción
+        para enviar el
+        formulario</label>
+    </div>
+
+    <br>
+
+    <div class="form-check ml-3">
+      <input [(ngModel)]="acuerdoComer" name="acuerdoComer" id="acuerdoComer" class="form-check-input" type="checkbox">
+      <label class="form-check-label" for="acuerdoComer">Acepto que SADCA me envie correos comerciales</label>
+    </div>
 
     <br>
     <br>

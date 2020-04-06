@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { EsiosService } from '../../services/esios.service';
-import { LoadingController, IonSlides, NavController } from '@ionic/angular';
+import {
+  LoadingController,
+  IonSlides,
+  NavController,
+  AlertController,
+} from '@ionic/angular';
 import { ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
@@ -85,7 +90,8 @@ export class PreciosHoraPage implements OnInit {
     private esiosServ: EsiosService,
     public loadingController: LoadingController,
     public navCtrl: NavController,
-    public modalController: ModalController
+    public modalController: ModalController,
+    private alertController: AlertController
   ) {}
 
   async ngOnInit() {
@@ -114,14 +120,12 @@ export class PreciosHoraPage implements OnInit {
       .subtract(2, 'hours')
       .format();
 
-    const hoy: string = moment(new Date(moment().format('YYYY-MM-DD')))
-      .subtract(2, 'hours')
+    let hoy: string = moment(new Date(moment().format('YYYY-MM-DD')))
+      .subtract(3, 'hours')
       .format();
 
-    const manana = moment(
-      new Date(moment().add(1, 'days').format('YYYY-MM-DD'))
-    )
-      .subtract(2, 'hours')
+    let manana = moment(new Date(moment().add(1, 'days').format('YYYY-MM-DD')))
+      .subtract(3, 'hours')
       .format();
     const pasado = moment(
       new Date(moment().add(2, 'days').format('YYYY-MM-DD'))
@@ -129,7 +133,6 @@ export class PreciosHoraPage implements OnInit {
       .subtract(2, 'hours')
       .format();
 
-    // this.preciosAyer = await this.esiosServ.getPreciosPorFecha(ayer, hoy);
     await this.esiosServ.getPreciosPorFecha(ayer, hoy).then((data: any) => {
       this.preciosAyer = data;
       for (const precio of this.preciosAyer) {
@@ -172,11 +175,8 @@ export class PreciosHoraPage implements OnInit {
       this.preMedioAyer = this.preMedioAyer / this.preciosAyer.length;
     });
 
-    // hoy = moment(new Date(moment().format('YYYY-MM-DD')))
-    //   .subtract(1, 'hours')
-    //   .format();
+    hoy = moment(hoy).add(1, 'hours').format();
 
-    // this.preciosHoy = await this.esiosServ.getPreciosPorFecha(hoy, manana);
     await this.esiosServ.getPreciosPorFecha(hoy, manana).then((data: any) => {
       this.preciosHoy = data;
 
@@ -220,19 +220,7 @@ export class PreciosHoraPage implements OnInit {
       this.preMedioHoy = this.preMedioHoy / this.preciosHoy.length;
     });
 
-    // console.log(this.preciosHoy);
-
-    // manana = moment(
-    //   new Date(
-    //     moment()
-    //       .add(1, 'days')
-    //       .format('YYYY-MM-DD')
-    //   )
-    // )
-    //   .subtract(1, 'hours')
-    //   .format();
-
-    // this.preciosMan = await this.esiosServ.getPreciosPorFecha(manana, pasado);
+    manana = moment(manana).add(1, 'hours').format();
     await this.esiosServ
       .getPreciosPorFecha(manana, pasado)
       .then((data: any) => {
@@ -278,6 +266,9 @@ export class PreciosHoraPage implements OnInit {
       });
 
     return new Promise((resolve) => {
+      if (this.preciosHoy.length === 0) {
+        this.presentAlert();
+      }
       return resolve('terminado');
     });
   }
@@ -357,5 +348,16 @@ export class PreciosHoraPage implements OnInit {
     return (
       moment().format('YYYY-MM-DD H') === moment(fecha).format('YYYY-MM-DD H')
     );
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message:
+        'Ha ocurrido un error, vuelva a intentarlo más tarde. Revise su conexión a internet',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
   }
 }

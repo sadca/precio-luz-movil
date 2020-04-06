@@ -10,6 +10,6 @@ export class ContactarService {
   constructor(private http: HttpClient) {}
 
   sendMail(datos: any) {
-    return this.http.post(this.url + '/contactar', datos);
+    return this.http.post(this.url + '/mails/contactar', datos);
   }
 }

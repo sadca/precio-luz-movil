@@ -6,7 +6,7 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-contactar',
   templateUrl: './contactar.page.html',
-  styleUrls: ['./contactar.page.scss']
+  styleUrls: ['./contactar.page.scss'],
 })
 export class ContactarPage implements OnInit {
   motivo: string = 'Ayuda';
@@ -14,6 +14,8 @@ export class ContactarPage implements OnInit {
   correo: string = '';
   comentario: string = '';
   telefono: number;
+  acuerdoComer: boolean = true;
+  politicaProtec: boolean = true;
 
   loading: any = null;
 
@@ -30,12 +32,15 @@ export class ContactarPage implements OnInit {
   }
 
   async enviar(form: NgForm) {
+    if (!this.politicaProtec) {
+      return;
+    }
     if (form.valid) {
       this.loading = await this.loadingController.create({
         message: '<img src="assets/logos/logo.gif">',
         spinner: null,
         cssClass: 'logo-cargando',
-        id: 'cargando'
+        id: 'cargando',
       });
       await this.loading.present();
 
@@ -46,7 +51,7 @@ export class ContactarPage implements OnInit {
         observaciones: this.observaciones,
         correo: this.correo,
         comentario: this.comentario,
-        telefono: this.telefono
+        telefono: this.telefono,
       };
 
       console.log(datos);
@@ -78,7 +83,7 @@ export class ContactarPage implements OnInit {
   async presentToast(mensaje: string) {
     const toast = await this.toastController.create({
       message: mensaje,
-      duration: 5000
+      duration: 5000,
     });
     toast.present();
   }
