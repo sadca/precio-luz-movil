@@ -20,6 +20,7 @@ import { ContactarService } from './services/contactar.service';
 import { MenuComponent } from './components/menu/menu.component';
 import { PreciosHoraAyudaComponent } from './components/ayuda/precios-hora-ayuda/precios-hora-ayuda.component';
 import { CompararPreciosAyudaComponent } from './components/ayuda/comparar-precios-ayuda/comparar-precios-ayuda.component';
+import { AhorrarFacturaAyudaComponent } from './components/ayuda/ahorrar-factura-ayuda/ahorrar-factura-ayuda.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,13 @@ import { CompararPreciosAyudaComponent } from './components/ayuda/comparar-preci
     MenuComponent,
     PreciosHoraAyudaComponent,
     CompararPreciosAyudaComponent,
+    AhorrarFacturaAyudaComponent,
   ],
-  entryComponents: [PreciosHoraAyudaComponent, CompararPreciosAyudaComponent],
+  entryComponents: [
+    PreciosHoraAyudaComponent,
+    CompararPreciosAyudaComponent,
+    AhorrarFacturaAyudaComponent,
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

@@ -1,8 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MultiFileUploadComponent } from '../../components/multi-file-upload/multi-file-upload.component';
 import { AhorrarFacturaService } from '../../services/ahorrar-factura.service';
-import { LoadingController, ToastController } from '@ionic/angular';
+import {
+  LoadingController,
+  ToastController,
+  ModalController,
+} from '@ionic/angular';
 import { NgForm } from '@angular/forms';
+import { AhorrarFacturaAyudaComponent } from 'src/app/components/ayuda/ahorrar-factura-ayuda/ahorrar-factura-ayuda.component';
 
 @Component({
   selector: 'app-ahorrar-factura',
@@ -15,7 +20,7 @@ export class AhorrarFacturaPage implements OnInit {
   correo: string = '';
   telefono: string = '';
   comentario: string = '';
-  acuerdoComer: boolean = true;
+  acuerdoComer: boolean = false;
   politicaProtec: boolean = true;
 
   loading: any = null;
@@ -23,7 +28,8 @@ export class AhorrarFacturaPage implements OnInit {
   constructor(
     private ahorrarServ: AhorrarFacturaService,
     public toastController: ToastController,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public modalController: ModalController
   ) {}
 
   ngOnInit() {}
@@ -47,6 +53,7 @@ export class AhorrarFacturaPage implements OnInit {
         correo: this.correo,
         comentario: this.comentario,
         telefono: this.telefono,
+        acuerdoComer: this.acuerdoComer,
       };
 
       console.log(datos);
@@ -89,5 +96,18 @@ export class AhorrarFacturaPage implements OnInit {
     this.comentario = '';
     this.telefono = undefined;
     this.fileField.archivos = [];
+    this.politicaProtec = true;
+    this.acuerdoComer = false;
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: AhorrarFacturaAyudaComponent,
+    });
+    return await modal.present();
+  }
+
+  showInfo() {
+    this.presentModal();
   }
 }

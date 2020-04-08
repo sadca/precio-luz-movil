@@ -1,3 +1,12 @@
 .tarjeta {
-  height: 200px;
+  min-height: 150px;
+  height: auto;
+}
+
+ion-icon {
+  font-size: xx-large;
+}
+
+ion-card {
+  height: 100%;
 }

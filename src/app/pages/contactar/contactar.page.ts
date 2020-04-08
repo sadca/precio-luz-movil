@@ -14,7 +14,7 @@ export class ContactarPage implements OnInit {
   correo: string = '';
   comentario: string = '';
   telefono: number;
-  acuerdoComer: boolean = true;
+  acuerdoComer: boolean = false;
   politicaProtec: boolean = true;
 
   loading: any = null;
@@ -52,6 +52,7 @@ export class ContactarPage implements OnInit {
         correo: this.correo,
         comentario: this.comentario,
         telefono: this.telefono,
+        acuerdoComer: this.acuerdoComer,
       };
 
       console.log(datos);
@@ -94,5 +95,7 @@ export class ContactarPage implements OnInit {
     this.correo = '';
     this.comentario = '';
     this.telefono = undefined;
+    this.politicaProtec = true;
+    this.acuerdoComer = false;
   }
 }

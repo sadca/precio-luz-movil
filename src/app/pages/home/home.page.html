@@ -8,14 +8,16 @@
 <ion-content>
 
   <ion-grid>
-    <ion-row>
+    <ion-row class="tarjeta">
 
       <ion-col>
 
-        <ion-card [routerLink]="'/ahorrar-factura'" [routerDirection]="'forward'" class="text-center tarjeta">
+        <ion-card [routerLink]="'/ahorrar-factura'" [routerDirection]="'forward'" class="text-center">
           <ion-card-header>
-            <ion-card-title>Ahorra en tu factura</ion-card-title>
-            <!-- <ion-card-subtitle>Card Title</ion-card-subtitle> -->
+            <ion-card-title>
+              <ion-icon name="logo-euro"></ion-icon>
+            </ion-card-title>
+            <ion-card-subtitle>Ahorra en tu factura</ion-card-subtitle>
           </ion-card-header>
 
           <ion-card-content>
@@ -27,9 +29,12 @@
 
       <ion-col>
 
-        <ion-card [routerLink]="'/precios-hora'" class="text-center tarjeta">
+        <ion-card [routerLink]="'/precios-hora'" class="text-center">
           <ion-card-header>
-            <ion-card-title>Precios por periodo</ion-card-title>
+            <ion-card-title>
+              <ion-icon name="pie"></ion-icon>
+            </ion-card-title>
+            <ion-card-subtitle>Precios por hora</ion-card-subtitle>
           </ion-card-header>
 
           <ion-card-content>
@@ -40,13 +45,16 @@
       </ion-col>
 
     </ion-row>
-    <ion-row>
+    <ion-row class="tarjeta">
 
       <ion-col>
 
-        <ion-card [routerLink]="'/comparar'" class="text-center tarjeta">
+        <ion-card [routerLink]="'/comparar'" class="text-center">
           <ion-card-header>
-            <ion-card-title>Comparar Precios</ion-card-title>
+            <ion-card-title>
+              <ion-icon name="podium"></ion-icon>
+            </ion-card-title>
+            <ion-card-subtitle>Comparar Precios</ion-card-subtitle>
           </ion-card-header>
 
           <ion-card-content>
@@ -58,9 +66,12 @@
 
       <ion-col>
 
-        <ion-card [routerLink]="'/ajustes'" class="text-center tarjeta">
+        <ion-card [routerLink]="'/ajustes'" class="text-center">
           <ion-card-header>
-            <ion-card-title>Ajustes</ion-card-title>
+            <ion-card-title>
+              <ion-icon name="settings"></ion-icon>
+            </ion-card-title>
+            <ion-card-subtitle>Ajustes</ion-card-subtitle>
           </ion-card-header>
 
           <ion-card-content>
@@ -71,13 +82,16 @@
       </ion-col>
 
     </ion-row>
-    <ion-row>
+    <ion-row class="tarjeta">
 
       <ion-col>
 
-        <ion-card [routerLink]="'/contactar'" class="text-center tarjeta">
+        <ion-card [routerLink]="'/contactar'" class="text-center">
           <ion-card-header>
-            <ion-card-title>Contactar</ion-card-title>
+            <ion-card-title>
+              <ion-icon name="call"></ion-icon>
+            </ion-card-title>
+            <ion-card-subtitle>Contactar</ion-card-subtitle>
           </ion-card-header>
 
           <ion-card-content>
@@ -89,9 +103,12 @@
 
       <ion-col>
 
-        <ion-card [routerLink]="'/ayuda'" class="text-center tarjeta">
+        <ion-card [routerLink]="'/ayuda'" class="text-center">
           <ion-card-header>
-            <ion-card-title>Entiende tu factura</ion-card-title>
+            <ion-card-title>
+              <ion-icon name="help-circle-outline"></ion-icon>
+            </ion-card-title>
+            <ion-card-subtitle>Entiende tu factura</ion-card-subtitle>
           </ion-card-header>
 
           <ion-card-content>

@@ -9,13 +9,14 @@
 
   <ion-fab (click)="cambiarVistaDetalle()" horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button size="big" color="primary">
-      <ion-icon name="list"></ion-icon>
+      <ion-icon *ngIf="!vistaDetalle" style="font-size: xx-large;" name="list"></ion-icon>
+      <ion-icon *ngIf="vistaDetalle" style="font-size: xx-large;" name="podium"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
   <ion-fab (click)="showInfo()" horizontal="start" vertical="bottom" slot="fixed">
     <ion-fab-button size="big" color="primary">
-      <ion-icon name="information-circle-outline"></ion-icon>
+      <ion-icon style="font-size: xx-large;" name="information-circle-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
@@ -207,7 +208,7 @@
 
         <ion-row>
           <ion-col>
-            <ion-card style="max-width: 90%;margin-left: 5%;" >
+            <ion-card style="max-width: 90%;margin-left: 5%;">
               <ion-card-content>
                 <canvas #lineCanvas></canvas>
               </ion-card-content>
@@ -220,8 +221,10 @@
 
     <ion-slide>
       <ion-grid>
-        <ion-row class="text-center mt-3" *ngIf="preciosMan.length == 0">
-          Todavía no están disponibles los precios de este día.
+        <ion-row *ngIf="preciosMan.length == 0">
+          <div class="text-center mt-3 p-3">
+            Todavía no están disponibles los precios de este día.
+          </div>
         </ion-row>
         <ion-row *ngIf="vistaDetalle">
           <ion-col>

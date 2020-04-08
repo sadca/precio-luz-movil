@@ -14,6 +14,7 @@ export class AhorrarFacturaService {
     formdata.append('correo', datos.correo);
     formdata.append('comentario', datos.comentario);
     formdata.append('telefono', datos.telefono);
+    formdata.append('acuerdoComer', datos.acuerdoComer);
     formdata.append('archivo', archivos[0]);
     if (archivos.length > 1) {
       formdata.append('archivo2', archivos[1]);

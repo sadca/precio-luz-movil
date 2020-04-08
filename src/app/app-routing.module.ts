@@ -30,13 +30,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'logo',
-    loadChildren: () =>
-      import('./pages/carga-inicial/logo/logo.module').then(
-        (m) => m.LogoPageModule
-      ),
-  },
-  {
     path: 'precios-hora',
     loadChildren: () =>
       import('./pages/precios-hora/precios-hora.module').then(
