@@ -40,7 +40,7 @@
 
   <ion-card>
     <ion-card-content>
-      <canvas #lineCanvas></canvas>
+      <canvas #lineCanvas height="40vh" width="40vw"></canvas>
     </ion-card-content>
   </ion-card>
 
@@ -50,10 +50,10 @@
         <ion-card *ngFor="let fechaComp of fechasComparar;let i = index">
           <ion-grid>
             <ion-row>
-              <ion-col size=9>
+              <ion-col class="pt-3 text-right" size=7>
                 {{fechaComp}}
               </ion-col>
-              <ion-col>
+              <ion-col class="text-right" size=5>
                 <ion-button (click)="borrarFecha(i)" color="danger" class="btn btn-sm">
                   <ion-icon name="close"></ion-icon>
                 </ion-button>

@@ -7,11 +7,27 @@
 
 <ion-list>
   <ion-menu-toggle auto-hide="false" *ngFor="let page of appPages">
-    <ion-item [routerDirection]="'root'" [routerLink]="page.url" (click)="cambioColor(page)" [color]="page.fondo">
+    <ion-item [routerDirection]="'forward'" [routerLink]="page.url" (click)="cambioColor(page)" [color]="page.fondo">
       <ion-icon slot="start" [name]="page.icon" [color]="page.colorIcon"></ion-icon>
       <ion-label [color]="page.texto">
         {{page.title}}
       </ion-label>
     </ion-item>
   </ion-menu-toggle>
+  <ion-item (click)="compartir()">
+    <ion-icon slot="start" color="black" name="share"></ion-icon>
+    <ion-label>
+      <ion-label [color]="'dark'">
+        Compartir
+      </ion-label>
+    </ion-label>
+  </ion-item>
+  <ion-item (click)="salir()">
+    <ion-icon slot="start" color="black" name="power"></ion-icon>
+    <ion-label>
+      <ion-label [color]="'dark'">
+        Salir
+      </ion-label>
+    </ion-label>
+  </ion-item>
 </ion-list>

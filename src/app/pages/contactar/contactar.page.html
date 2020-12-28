@@ -87,11 +87,12 @@
         type="checkbox">
       <label class="form-check-label" for="politicaProtec">He leído y acepto la <span
           onclick="window.open('https://www.sadca.es/Privacy.html', '_system', 'location=yes'); return false;"
-          class="alert-link">Política de
-          privacidad y Protección de datos</span></label>
-      <label *ngIf="!politicaProtec" class="form-check-label text-danger" for="politicaProtec">Debe aceptar esta opción
-        para enviar el
-        formulario</label>
+          class="alert-link">Política de privacidad y Protección de datos</span> y las 
+          <span onclick="window.open('https://www.sadca.es/cGenerales.html', '_system', 'location=yes'); return false;"
+          class="alert-link">Condiciones Generales</span>
+        </label>
+      <label *ngIf="!politicaProtec && form.submitted" class="form-check-label text-danger" for="politicaProtec">Debe aceptar esta opción
+        para enviar el formulario</label>
     </div>
 
     <!-- <br>

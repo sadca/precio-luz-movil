@@ -14,7 +14,6 @@ export class AjustesPage implements OnInit {
 
   async ngOnInit() {
     await this.storage.get('tarifa').then((valor) => {
-      console.log(valor);
       if (valor !== undefined && valor !== null) {
         this.tarifa = valor;
       } else {

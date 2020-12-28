@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="es.sadca.ahorraluz" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="es.sadca.energy.ahorraluz" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Ahorra Luz</name>
     <description>Aplicación desarrollada por SADCA Energy.</description>
     <author email="contacto@sadca.es" href="http://sadca.es/">SADCA Energy</author>

@@ -25,46 +25,17 @@ export class EsiosService {
         this.precios[i].value = this.precios[i].value / 1000;
       }
 
-      // await this.getPrecios10211(desde, hasta).then((data: any) => {
-      //   if (data !== 'Error') {
-      //     this.precios = data.values;
-      //   } else {
-      //     this.precios = [];
-      //   }
-      // });
-
-      // await this.getCosts(desde, hasta).then((costes: any) => {
-      //   console.log(costes);
-      //   if (costes !== 'Error') {
-      //     for (let i = 0; i < this.precios.length; i++) {
-      //       const coste = costes.precios[i].Coste * 10;
-      //       console.log(coste);
-      //       this.precios[i].value =
-      //         this.precios[i].value / 1000 + coste + 0.009;
-      //     }
-      //   } else {
-      //     console.log('Error WS');
-      //     // tslint:disable-next-line: prefer-for-of
-      //     for (let i = 0; i < this.precios.length; i++) {
-      //       this.precios[i].value = this.precios[i].value / 1000;
-      //     }
-      //   }
-      // });
-
       return resolve(this.precios);
     });
   }
 
   getPrecios10211(desde: any, hasta: any) {
     const url = URL_SERVICIOS + 'indicators/10211';
-    console.log(url);
 
     let params = new HttpParams();
 
     params = params.append('start_date', '' + desde);
     params = params.append('end_date', '' + hasta);
-    console.log('Desde', desde);
-    console.log('Hasta', hasta);
 
     const headers = new HttpHeaders({
       Authorization: TOKEN,
@@ -103,14 +74,10 @@ export class EsiosService {
       }
     });
 
-    console.log(url);
-
     let params = new HttpParams();
 
     params = params.append('start_date', '' + desde);
     params = params.append('end_date', '' + hasta);
-    console.log('Desde', desde);
-    console.log('Hasta', hasta);
 
     const headers = new HttpHeaders({
       Authorization: TOKEN,

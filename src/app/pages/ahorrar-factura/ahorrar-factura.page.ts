@@ -21,7 +21,7 @@ export class AhorrarFacturaPage implements OnInit {
   telefono: string = '';
   comentario: string = '';
   acuerdoComer: boolean = false;
-  politicaProtec: boolean = true;
+  politicaProtec: boolean = false;
 
   loading: any = null;
 
@@ -46,8 +46,6 @@ export class AhorrarFacturaPage implements OnInit {
         id: 'cargando',
       });
       await this.loading.present();
-
-      console.log(form);
 
       const datos = {
         correo: this.correo,
@@ -96,7 +94,7 @@ export class AhorrarFacturaPage implements OnInit {
     this.comentario = '';
     this.telefono = undefined;
     this.fileField.archivos = [];
-    this.politicaProtec = true;
+    this.politicaProtec = false;
     this.acuerdoComer = false;
   }
 

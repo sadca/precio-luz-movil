@@ -7,10 +7,11 @@ import {
   AlertController,
 } from '@ionic/angular';
 import { ViewChild } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import * as moment from 'moment';
 import chartJs from 'chart.js';
 import { PreciosHoraAyudaComponent } from '../../components/ayuda/precios-hora-ayuda/precios-hora-ayuda.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-precios-hora',

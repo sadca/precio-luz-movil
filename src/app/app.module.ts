@@ -21,6 +21,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { PreciosHoraAyudaComponent } from './components/ayuda/precios-hora-ayuda/precios-hora-ayuda.component';
 import { CompararPreciosAyudaComponent } from './components/ayuda/comparar-precios-ayuda/comparar-precios-ayuda.component';
 import { AhorrarFacturaAyudaComponent } from './components/ayuda/ahorrar-factura-ayuda/ahorrar-factura-ayuda.component';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AhorrarFacturaAyudaComponent } from './components/ayuda/ahorrar-factura
     EsiosService,
     AhorrarFacturaService,
     ContactarService,
+    SocialSharing,
   ],
   bootstrap: [AppComponent],
 })

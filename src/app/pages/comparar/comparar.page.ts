@@ -3,19 +3,17 @@ import * as moment from 'moment';
 import {
   NavController,
   AlertController,
-  ToastController
+  ToastController,
 } from '@ionic/angular';
 import chartJs from 'chart.js';
 import { EsiosService } from '../../services/esios.service';
 import { LoadingController, ModalController } from '@ionic/angular';
-import { labelsHoras } from '../../config/constantes';
-import { PreciosHoraAyudaComponent } from '../../components/ayuda/precios-hora-ayuda/precios-hora-ayuda.component';
 import { CompararPreciosAyudaComponent } from '../../components/ayuda/comparar-precios-ayuda/comparar-precios-ayuda.component';
 
 @Component({
   selector: 'app-comparar',
   templateUrl: './comparar.page.html',
-  styleUrls: ['./comparar.page.scss']
+  styleUrls: ['./comparar.page.scss'],
 })
 export class CompararPage implements OnInit {
   @ViewChild('lineCanvas', { static: true }) lineCanvas;
@@ -26,9 +24,7 @@ export class CompararPage implements OnInit {
   fecha: any = moment(new Date(moment().format('YYYY-MM-DD'))).format();
   hoy: string = moment().format('YYYY-MM-DD');
   fechasComparar: string[] = [];
-  manana: string = moment()
-    .add(1, 'days')
-    .format('YYYY-MM-DD');
+  manana: string = moment().add(1, 'days').format('YYYY-MM-DD');
   labels: any[] = [
     '0',
     '1',
@@ -53,12 +49,12 @@ export class CompararPage implements OnInit {
     '20',
     '21',
     '22',
-    '23'
+    '23',
   ];
 
   datos: any[] = [];
   data: any = {
-    labels: this.labels
+    labels: this.labels,
     // datasets: [
     //   {
     //     label: 'Precios Hoy',
@@ -89,13 +85,13 @@ export class CompararPage implements OnInit {
         'red', // color for data at index 0
         'blue', // color for data at index 1
         'green', // color for data at index 2
-        'black' // color for data at index 3
-      ]
+        'black', // color for data at index 3
+      ],
     };
     this.lineChart = new chartJs(this.lineCanvas.nativeElement, {
       data: this.data,
       options,
-      type: 'line'
+      type: 'line',
     });
   }
 
@@ -104,24 +100,24 @@ export class CompararPage implements OnInit {
       message: '<img src="assets/logos/logo.gif">',
       spinner: null,
       cssClass: 'logo-cargando',
-      id: 'cargando'
+      id: 'cargando',
     });
     await this.loading.present();
-    const desde: string = moment(this.fecha)
-      .subtract(1, 'hour')
-      .format();
+
+    if (this.fechasComparar.length >= 4) {
+      this.presentToast('No puede añadir más de 4');
+      this.loadingController.dismiss('cargando');
+      return;
+    }
+
+    const desde: string = moment(this.fecha).subtract(1, 'hour').format();
 
     const hasta = moment(
-      new Date(
-        moment(this.fecha)
-          .add(1, 'days')
-          .format('YYYY-MM-DD')
-      )
+      new Date(moment(this.fecha).add(1, 'days').format('YYYY-MM-DD'))
     ).format();
 
     for (const fecha of this.fechasComparar) {
       if (moment(desde).format('DD/MM/YYYY') === fecha) {
-        console.log('Fecha ya añadida');
         this.presentToast('¡Fecha ya añadida!');
         this.loadingController.dismiss('cargando');
         return;
@@ -151,7 +147,7 @@ export class CompararPage implements OnInit {
         ')',
       borderCapStyle: 'butt',
       borderJoinStyle: 'miter',
-      pointRadius: 2
+      pointRadius: 2,
     };
     await this.esiosServ.getPreciosPorFecha(desde, hasta).then((data: any) => {
       const precios = [];
@@ -164,7 +160,6 @@ export class CompararPage implements OnInit {
         this.lineChart.data.datasets.push(dataNueva);
         this.lineChart.update();
       } else {
-        console.log('No hay datos para esa fecha');
         this.presentAlertConfirm('¡Sin datos!', 'No hay datos para esta fecha');
       }
     });
@@ -176,7 +171,7 @@ export class CompararPage implements OnInit {
       message: '<img src="assets/logos/logo.gif">',
       spinner: null,
       cssClass: 'logo-cargando',
-      id: 'cargando'
+      id: 'cargando',
     });
     await this.loading.present();
     for (let i = 0; i < this.lineChart.data.datasets.length; i++) {
@@ -202,11 +197,9 @@ export class CompararPage implements OnInit {
       buttons: [
         {
           text: 'Aceptar',
-          handler: () => {
-            console.log('Confirm Okay');
-          }
-        }
-      ]
+          handler: () => {},
+        },
+      ],
     });
 
     await alert.present();
@@ -215,14 +208,14 @@ export class CompararPage implements OnInit {
   async presentToast(mensaje: string) {
     const toast = await this.toastController.create({
       message: mensaje,
-      duration: 2000
+      duration: 2000,
     });
     toast.present();
   }
 
   async presentModal() {
     const modal = await this.modalController.create({
-      component: CompararPreciosAyudaComponent
+      component: CompararPreciosAyudaComponent,
     });
     return await modal.present();
   }

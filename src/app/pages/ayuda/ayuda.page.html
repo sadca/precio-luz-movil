@@ -7,7 +7,6 @@
   </ion-buttons>
 </ion-header>
 
-
 <ion-content>
 
   <div class="container p-4 text-justify">
@@ -24,7 +23,200 @@
 
     <p>¿Y sabes qué? Nosotros te ayudamos con las dos y completamente gratis.</p>
 
-    <p class="font-weight-bold">
+
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne" type="button" data-toggle="collapse" data-target="#collapseOne"
+          aria-expanded="false" aria-controls="collapseOne">
+          Contador inteligente + distribuidor + comercializadora
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <p class="ml-3">
+              Para conseguir un ahorro utilizando primera opción se necesita disponer de un contador inteligente en el
+              hogar
+              (más del 99% de los hogares cuentan con él).
+            </p>
+            <p class="ml-3">
+              El contador inteligente permite a su distribuidora enviar la información horaria a su comercializadora y a
+              esta le
+              permite facturar por el precio de la energía en cada hora del día.
+            </p>
+            <p class="ml-3">
+              Si usted tiene uno de ellos puede ahorrar utilizando los electrodomésticos en las horas del día en las que
+              la
+              energía es más barata.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo" type="button" data-toggle="collapse" data-target="#collapseTwo"
+          aria-expanded="false" aria-controls="collapseTwo">
+          Precio
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
+            <p class="ml-3">
+              Los precios que se muestran en esta app representan el coste de la energía activa en €/kWh del PVPC para
+              las
+              tarifas 2.0A (Peaje general), 2.0DHA (Tarifa Nocturna), 2.0DHS (Vehículo eléctrico) y son proporcionados
+              por el
+              operador del Sistema Eléctrico Español (Red Eléctrica de España). Los precios no incluyen impuestos.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree" type="button" data-toggle="collapse" data-target="#collapseThree"
+          aria-expanded="false" aria-controls="collapseThree">
+          Tarifas
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <p class="ml-3">
+              Puede encontrar su tarifa en su factura, buscando tarifa o peaje de acceso:
+            </p>
+            <p class="ml-3 font-weight-bold">
+              Tarifa General (2.0A) - 1 periodo
+            </p>
+            <p class="ml-3 font-weight-bold">
+              Tarifa N octurna (2.0DHA) – 2 Periodos
+            </p>
+            <p class="ml-3 font-weight-bold">
+              Tarifa Vehículo Eléctrico (2.0DHS) – 3 Periodos
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingFour" type="button" data-toggle="collapse" data-target="#collapseFour"
+          aria-expanded="false" aria-controls="collapseFour">
+          Territorio
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+          <div class="card-body">
+            <p class="ml-3">
+              El sistema eléctrico español está dividido en 5 subsistemas (Península, Baleares, Canarias, Ceuta y
+              Melilla). Los
+              precios para Canarias son los mismos que para el resto de territorios con la única diferencia de que
+              debido al
+              cambio horario el precio para Canarias es el Precio que marca la APP en la hora siguiente. Ej el precio en
+              Canarias para las 15:00 es el precio que marca la App a las 16:00.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingFive" type="button" data-toggle="collapse" data-target="#collapseFive"
+          aria-expanded="false" aria-controls="collapseFive">
+          Electrodomésticos
+        </div>
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+          <div class="card-body">
+            <p class="ml-3">
+              En este apartado te ayudamos a elegir a que electrodoméstico prestar más atención:
+            </p>
+
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th scope="col">Electrodoméstico</th>
+                  <th scope="col">Potencia</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let elect of electrodomesticos">
+                  <td>{{elect.nombre}}</td>
+                  <td>{{elect.potencia}} W</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingSix" type="button" data-toggle="collapse" data-target="#collapseSix"
+          aria-expanded="false" aria-controls="collapseSix">
+          Producto contratado
+        </div>
+        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+          <div class="card-body">
+            <p class="ml-3">
+              La gran mayoría de hogares en España tienen uno de estos dos productos contratados
+            </p>
+            <ul>
+
+              <li>
+                Fijo: El precio de la luz es el mismo para cada periodo tarifario durante la vigencia del contrato
+                (generalmente
+                12 meses), de modo que con una tarifa general (2.0A) usted tendrá el mismo precio durante todo el año,
+                con una
+                tarifa nocturna (2.0DHA) tendrá 2 precios distintos dependiendo de la hora del día y época del año y con
+                una
+                tarifa Vehículo Eléctrico (2.0DHS) tendrá 3 precios distintos dependiendo del día y época del año.
+              </li>
+
+              <li>
+                Indexado: Tiene un precio distinto a cada hora, que se determinará por los distintos costes del mercado,
+                del
+                sistema y los costes de la comercializadora. Pagas lo que consumes en cada momento.
+              </li>
+
+            </ul>
+
+            <p>
+              Nuestra aplicación está dirigida a aquellas personas que tengan contratado o que quieran contratar este
+              segundo
+              producto.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingSeven" type="button" data-toggle="collapse" data-target="#collapseSeven"
+          aria-expanded="false" aria-controls="collapseSeven">
+          Ahorro
+        </div>
+        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+          <div class="card-body">
+            <p class="ml-3">
+              Pero… hay algo más Sadca Energy también te puede ayudar a ahorrar si tienes contratado un producto fijo
+              ¿Cómo?
+            </p>
+            <p class="ml-3">
+              Ofreciéndote un producto fijo más barato y enviándote un estudio personalizado haciéndote ver cuál será tu
+              ahorro
+              aproximado.
+            </p>
+            <p class="ml-3">
+              ¿Y si tengo un indexado también puedo ahorrar?
+            </p>
+            <p class="ml-3">
+              Sí, contactamos con comercializadoras y conseguimos que bajen sus costes de comercialización, por lo que
+              si ellos
+              ganan menos usted ahorra más.
+            </p>
+            <p class="ml-3">
+              Para ello únicamente necesitaremos una factura, la cual puede adjuntar en el apartado
+              <span class="font-weight-bold">Ahorra en tu factura</span>, que se encuentra en la pantalla de Inicio o en
+              las
+              opciones del menú.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- <p class="font-weight-bold">
       1. Contador inteligente + distribuidor + comercializadora
     </p>
     <p class="ml-3">
@@ -143,16 +335,15 @@
       ganan menos usted ahorra más.
     </p>
     <p class="ml-3">
-      Para ello únicamente necesitaremos una factura, la cual puede adjuntar en el apartado Ahorra en tu factura, el
-      cual lo encontrará en la pantalla de Inicio de la App.
-    </p>
-
+      Para ello únicamente necesitaremos una factura, la cual puede adjuntar en el apartado
+      <span class="font-weight-bold">Ahorra en tu factura</span>, que se encuentra en la pantalla de Inicio o en las
+      opciones del menú.
+    </p> -->
+    <br>
     <p class="ml-3 font-weight-bold font-italic font">
       <u>Ahorra en tu factura de Luz y Gas con Sadca Energy</u>
     </p>
 
-
   </div>
-
 
 </ion-content>

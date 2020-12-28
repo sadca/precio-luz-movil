@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
   public appPages = [
@@ -13,7 +15,7 @@ export class MenuComponent implements OnInit {
       icon: 'home',
       colorIcon: 'dark',
       fondo: '',
-      texto: 'dark'
+      texto: 'dark',
     },
     {
       title: 'Ahorra en tu factura',
@@ -21,15 +23,15 @@ export class MenuComponent implements OnInit {
       icon: 'logo-euro',
       colorIcon: 'dark',
       fondo: '',
-      texto: 'dark'
+      texto: 'dark',
     },
     {
-      title: 'Precios por periodo',
+      title: 'Precios por hora',
       url: '/precios-hora',
       icon: 'pie',
       colorIcon: 'dark',
       fondo: '',
-      texto: 'dark'
+      texto: 'dark',
     },
     {
       title: 'Comparar Precios',
@@ -37,7 +39,7 @@ export class MenuComponent implements OnInit {
       icon: 'podium',
       colorIcon: 'dark',
       fondo: '',
-      texto: 'dark'
+      texto: 'dark',
     },
     {
       title: 'Ajustes',
@@ -45,7 +47,7 @@ export class MenuComponent implements OnInit {
       icon: 'settings',
       colorIcon: 'dark',
       fondo: '',
-      texto: 'dark'
+      texto: 'dark',
     },
     {
       title: 'Contactar',
@@ -53,7 +55,7 @@ export class MenuComponent implements OnInit {
       icon: 'call',
       colorIcon: 'dark',
       fondo: '',
-      texto: 'dark'
+      texto: 'dark',
     },
     {
       title: 'Ayuda',
@@ -61,14 +63,28 @@ export class MenuComponent implements OnInit {
       icon: 'help-circle-outline',
       colorIcon: 'dark',
       fondo: '',
-      texto: 'dark'
-    }
+      texto: 'dark',
+    },
   ];
 
-  constructor() {}
+  constructor(
+    private socialSharing: SocialSharing,
+    private alertController: AlertController
+  ) {}
 
-  ngOnInit() {
-    console.log(window.location.href);
+  ngOnInit() {}
+
+  compartir() {
+    const texto =
+      'Consulta el precio de la luz diario con esta app: https://play.google.com/store/apps/details?id=es.sadca.energy.ahorraluz';
+    this.socialSharing
+      .share(texto)
+      .then(() => {
+        console.log('Si se puede compartir');
+      })
+      .catch(() => {
+        console.log('No se ha podido compartir');
+      });
   }
 
   cambioColor(page: any) {
@@ -76,5 +92,30 @@ export class MenuComponent implements OnInit {
     //   pagina.fondo = '';
     // });
     // page.fondo = 'warning';
+  }
+
+  async salir() {
+    const alert = await this.alertController.create({
+      header: 'Salir',
+      message: '¿Está seguro de que quiere salir de la aplicación?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {},
+        },
+        {
+          text: 'Salir',
+          cssClass: 'text-danger',
+          handler: () => {
+            // tslint:disable-next-line: no-string-literal
+            navigator['app'].exitApp();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 }

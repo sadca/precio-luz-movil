@@ -17,7 +17,7 @@
 
     <section class="pl-3 pr-3 mt-3 text-justify">
       <ion-text class="text-muted">La mayoría de los hogares pueden pagar un precio más bajo en sus facturas de luz y
-        gas. Si nos adjuta su factura nos pondremos en contaco con usted en las próximas 24/48 horas para indicarle
+        gas. Si nos adjunta su factura nos pondremos en contacto con usted en las próximas 24/48 horas para indicarle
         mediante un estudio personalizado y gratuito cual sería su ahorro aproximado.
       </ion-text>
     </section>
@@ -64,11 +64,12 @@
         type="checkbox">
       <label class="form-check-label" for="politicaProtec">He leído y acepto la <span
           onclick="window.open('https://www.sadca.es/Privacy.html', '_system', 'location=yes'); return false;"
-          class="alert-link">Política de
-          privacidad y Protección de datos</span></label>
-      <label *ngIf="!politicaProtec" class="form-check-label text-danger" for="politicaProtec">Debe aceptar esta opción
-        para enviar el
-        formulario</label>
+          class="alert-link">Política de privacidad y Protección de datos</span> y las 
+          <span onclick="window.open('https://www.sadca.es/cGenerales.html', '_system', 'location=yes'); return false;"
+          class="alert-link">Condiciones Generales</span>
+        </label>
+      <label *ngIf="!politicaProtec && form.submitted" class="form-check-label text-danger" for="politicaProtec">Debe aceptar esta opción
+        para enviar el formulario</label>
     </div>
 
     <br>
